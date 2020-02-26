@@ -1,0 +1,5 @@
+{{ post.timestamp|timesince }} ago
+
+11 Days, 15 Minut Ago
+11 Hours, 15 Minutes Ago
+2 Weeks, 6 Days ago
