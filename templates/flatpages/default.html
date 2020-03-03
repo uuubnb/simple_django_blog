@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+  
+{% load static %}
+
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>{{ flatpage.title }}</title>
+  <meta name="description" content="">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="all,follow">
+  <link rel="stylesheet" href="{% static 'vendor/bootstrap/css/bootstrap.min.css' %}">
+  <link rel="stylesheet" href="{% static 'vendor/font-awesome/css/font-awesome.min.css' %}">
+  <link rel="stylesheet" href="{% static 'css/fontastic.css' %}">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,700">
+  <link rel="stylesheet" href="{% static 'vendor/@fancyapps/fancybox/jquery.fancybox.min.css' %}">
+  <link rel="stylesheet" href="{% static 'css/style.default.css' %}" id="theme-stylesheet">
+  <link rel="stylesheet" href="{% static 'css/custom.css' %}">
+  <link rel="shortcut icon" href="{% static 'favicon.png' %}">
+
+  <link href='{% static "css/github.css" %}' rel="stylesheet">
+
+  <!-- Tweaks for older IEs--><!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script><![endif]-->
+</head>
+
+<body>
+
+    {% include "header.html" %} 
+
+    {% block content %}
+
+    <div class="container">
+      <div class="row">
+        <!-- Latest Posts -->
+        <main class="posts-listing col-lg-8"> 
+          <div class="container">
+            <div class="row">
+              <!-- post -->
+              <h2 class="h3">This is a contact page</h2>
+              <p class="text-big">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderi.</p>
+            </div>
+          </div>
+        </main>
+        {% include 'sidebar.html' with most_recent=most_recent category_count=category_count %}
+      </div>
+    </div>
+    
+    {% endblock content %}
+
+    {% include "footer.html" %}
+    {% include "scripts.html" %} 
+
+</body>
+
+</html>

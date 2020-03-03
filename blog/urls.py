@@ -2,7 +2,7 @@ from django.conf import settings
 from django.conf.urls.static import static
 from django.contrib import admin
 from django.urls import path, include
-
+from django.contrib.flatpages import views
 from posts.views import index, blog, post, search
 
 urlpatterns = [
@@ -12,6 +12,10 @@ urlpatterns = [
     path('search/', search, name='search'),
     path('post/<id>/', post, name='post-detail'),
     path('tinymce/', include('tinymce.urls')),
+    path('pages/', include('django.contrib.flatpages.urls')),
+    # path('<path:url>', views.flatpage),
+    # path('about/', views.flatpage, {'url': '/about/'}, name='about'),
+
 ]
 
 if settings.DEBUG:
