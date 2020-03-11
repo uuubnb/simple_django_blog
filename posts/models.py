@@ -1,4 +1,5 @@
 from tinymce import HTMLField
+from django.contrib.flatpages.models import FlatPage
 from django.db import models
 from django.contrib.auth import get_user_model
 from django.urls import reverse
@@ -57,3 +58,10 @@ class Comment(models.Model):
         return self.user.username    
 
 
+class NewFlatPage(models.Model):
+    flatpage = models.OneToOneField(FlatPage, on_delete=models.CASCADE)
+    description = HTMLField()
+    text_block = HTMLField()
+
+    def __str__(self):
+        return self.flatpage.title
