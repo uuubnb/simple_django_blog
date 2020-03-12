@@ -2,7 +2,8 @@ from django.contrib import admin
 from django import forms
 from tinymce import TinyMCE
 from .forms import TinyMCEWidget
-from .models import Author, Category, Post, Comment, FlatPage
+from .models import Author, Category, Post, Comment
+from django.contrib.flatpages.models import FlatPage
 
 admin.site.register(Author)
 admin.site.register(Category)
