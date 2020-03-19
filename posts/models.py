@@ -5,6 +5,15 @@ from django.urls import reverse
 
 User = get_user_model()
 
+class PostView(models.Model):
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    post = models.ForeignKey('Post', on_delete=models.CASCADE)
+
+    def __str__(self):
+        return self.user.username
+
+
+
 class Author(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE)
     profile_picture = models.ImageField()
@@ -38,17 +47,17 @@ class Post(models.Model):
 
     def get_absolute_url(self):
         return reverse('post-detail', kwargs={
-            'id': self.id
+            'pk': self.pk
         })
     
     def get_update_url(self):
         return reverse('post-update', kwargs={
-            'id': self.id
+            'pk': self.pk
         })
 
     def get_delete_url(self):
         return reverse('post-delete', kwargs={
-            'id': self.id
+            'pk': self.pk
         })
 
     @property
