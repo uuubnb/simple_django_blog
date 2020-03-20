@@ -12,7 +12,6 @@ def get_author(user):
         return qs[0]
     return None
 
-
 def search(request):
     queryset = Post.objects.all()
     query = request.GET.get('q')
@@ -78,7 +77,7 @@ class PostListView(ListView):
     context_object_name = 'queryset' #определяет какая переменная будет использоваться для передачи контекста  
     paginate_by = 4 #встроенный пагинатор, число - сколько объектов будет на странице
 
-    def get_context_data(self, **kwargs): #метод get_context_data
+    def get_context_data(self, **kwargs): #Возвращает данные контекста для отображения списка объектов
         category_count = get_category_count() #вызов функции get_category_count
         most_recent = Post.objects.order_by('-timestamp')[:3] #извлечение трех последних записей из модели Post
         context = super().get_context_data(**kwargs) # вызов метода супер-класса (препдположение) для получения контекста в качестве аргументов дале  
@@ -109,12 +108,12 @@ class PostListView(ListView):
 #     return render(request, 'post.html', context) 
 
 class PostDetailView(DetailView):
-    model = Post
-    template_name = 'post.html'
-    context_object_name = 'post'
-    form = CommentForm()
+    model = Post  #использовать данные модели Post
+    template_name = 'post.html' #использовать этот template 
+    context_object_name = 'post' #определяет какая переменная будет использоваться для передачи контекста
+    form = CommentForm() #переменная для вывода формы комментариев
 
-    def get_object(self):
+    def get_object(self): #Возвращает объект, который отображается данным представлением
         obj = super().get_object()
         if self.request.user.is_authenticated:
             PostView.objects.get_or_create(
@@ -123,7 +122,7 @@ class PostDetailView(DetailView):
             )
         return obj
 
-    def get_context_data(self, **kwargs):
+    def get_context_data(self, **kwargs): #Возвращает данные контекста для отображения списка объектов
         category_count = get_category_count()
         most_recent = Post.objects.order_by('-timestamp')[:3]
         context = super().get_context_data(**kwargs)
