@@ -38,17 +38,17 @@ class Post(models.Model):
 
     def get_absolute_url(self):
         return reverse('post-detail', kwargs={
-            'id': self.id
+            'pk': self.pk
         })
     
     def get_update_url(self):
         return reverse('post-update', kwargs={
-            'id': self.id
+            'pk': self.pk
         })
 
     def get_delete_url(self):
         return reverse('post-delete', kwargs={
-            'id': self.id
+            'pk': self.pk
         })
 
     @property
@@ -61,7 +61,6 @@ class Comment(models.Model):
     timestamp = models.DateTimeField(auto_now_add=True)
     content = models.TextField()
     post = models.ForeignKey(Post, related_name='comments', on_delete=models.CASCADE)
-
 
     def __str__(self):
         return self.user.username    
