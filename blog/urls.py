@@ -16,10 +16,9 @@ urlpatterns = [
     path('post/<pk>/update/', post_update, name='post-update'),
     path('post/<pk>/delete/', post_delete, name='post-delete'),
     path('tinymce/', include('tinymce.urls')),
-    
     path('pages/', include('django.contrib.flatpages.urls')),
-    # path('<path:url>', views.flatpage),
-    # path('about/', views.flatpage, {'url': '/about/'}, name='about'),
+    path('accounts/', include('django_registration.backends.activation.urls')),
+    path('accounts/', include('django.contrib.auth.urls')),
 
 ]
 
