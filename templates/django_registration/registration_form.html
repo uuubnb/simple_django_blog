@@ -3,9 +3,19 @@
 
 {% block content %}
 
-<div class="container">
-{{ form }}
-</div>
 
+<div class="container">
+    <div class="row">
+      <!-- Latest Posts -->
+      <main class="posts-listing col-lg-8"> 
+        <div class="container">
+            <div class="row">
+                {{ form }}
+            </div>
+        </div>
+      </main>
+      {% include 'flatpages-sidebar.html' %}
+    </div>
+  </div>
 
 {% endblock content %}
