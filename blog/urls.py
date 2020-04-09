@@ -17,8 +17,7 @@ urlpatterns = [
     path('post/<pk>/delete/', post_delete, name='post-delete'),
     path('tinymce/', include('tinymce.urls')),
     path('pages/', include('django.contrib.flatpages.urls')),
-    path('accounts/', include('django_registration.backends.activation.urls')),
-    path('accounts/', include('django.contrib.auth.urls')),
+    path('accounts/', include('allauth.urls')),
 ]
 
 if settings.DEBUG:

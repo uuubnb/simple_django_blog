@@ -30,6 +30,9 @@ INSTALLED_APPS = [
     'tinymce',
     'posts',
     'marketing',
+
+    'allauth',
+    'allauth.account',
 ]
 
 CRISPY_TEMPLATE_PACK = 'bootstrap4'
@@ -76,6 +79,11 @@ DATABASES = {
         'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
     }
 }
+
+AUTHENTICATION_BACKENDS = (
+    'django.contrib.auth.backends.ModelBackend',
+    'allauth.account.auth_backends.AuthenticationBackend',
+)
 
 
 # Password validation
@@ -154,4 +162,3 @@ TINYMCE_DEFAULT_CONFIG = {
 } 
 
 SITE_ID = 1
-ACCOUNT_ACTIVATION_DAYS = 7
